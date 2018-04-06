@@ -11,6 +11,11 @@ import javafx.stage.Stage;
 import utilityUsers.EmployerJohnDoe;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.geometry.Pos;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.TextAlignment;
+
+import java.util.Optional;
 
 import java.io.IOException;
 import java.net.URL;
@@ -63,7 +68,9 @@ public class EmployerProfileController {
 	
 	
 	@FXML
-	private TextArea aboutMe;
+	private Label aboutMe;
+	@FXML
+	private Button editAboutMe;
 	
 	//temporary random employer to display on profile page
 	@FXML
@@ -81,6 +88,16 @@ public class EmployerProfileController {
 		employerEmail.setText(johnDoe.getEmail());
 		employerNumber.setText(johnDoe.getPhoneNumber());
 		employerHiring.setText(johnDoe.getOfferingJobs());
+	}
+	
+	public void editAbout(ActionEvent event) throws IOException {
+		TextInputDialog dialog = new TextInputDialog();
+		dialog.setTitle("Edit About Me");
+		dialog.setContentText("About Me:");
+		dialog.getEditor().setPrefSize(300, 200);
+		dialog.getEditor().setAlignment(Pos.TOP_LEFT);
+		Optional<String> text = dialog.showAndWait();
+		aboutMe.setText(text.get());
 	}
 	
 	/**

@@ -30,6 +30,16 @@ import java.util.Stack;
 import java.util.ArrayList;
 import java.util.*;
 import javafx.collections.ObservableList;
+import javafx.scene.layout.GridPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.TextField;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.text.TextAlignment;
 
 
 public class NewStudentController {
@@ -132,7 +142,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 
 	//list of random universities
 	@FXML
-	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University One", "this is a University", "University of :)", "another University");
+	private ObservableList<String> otherSchools = FXCollections.observableArrayList("University of Calgary", "University One", "University Two", "University Three", "University Four");
 
 
 	@FXML
@@ -158,6 +168,12 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         		alert.setContentText("Please fill in all fields!");
         		alert.showAndWait();
         }
+        else if (!enterUID.getText().matches("[0-9]+") || enterUID.getText().length() != 8) {
+    		alert.setTitle("Error");
+    		alert.setHeaderText(null);
+    		alert.setContentText("Invalid UID!");
+    		alert.showAndWait();
+    }
 				//if the user chooses a username that is too short/long
         else if (enterUsername.getText().length() < 3 || enterUsername.getText().length() > 20) {
         		alert.setTitle("Error");
@@ -238,7 +254,7 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
 	public void finishButtonClickedStudent(ActionEvent event) throws IOException {
 
 		Alert alert = new Alert(AlertType.ERROR);
-		Alert gpa = new Alert(AlertType.INFORMATION);
+		TextInputDialog gpa = new TextInputDialog();
 				//if user user leaves fields blank
         if (cityName.getText().isEmpty() || provinceName.getSelectionModel().isEmpty() || countryName.getSelectionModel().isEmpty() ||
         		universityName.getSelectionModel().isEmpty() || degree.getSelectionModel().isEmpty() || yearOfStudy.getSelectionModel().isEmpty()) {
@@ -248,22 +264,43 @@ private Database db = new Database(f.fileLoad()); //loads the current file each 
         		alert.showAndWait();
         }
         else {
-//        		demoStudent.setCity(cityName.getText());
-//        		demoStudent.setProvince(provinceName.getSelectionModel().getSelectedItem().toString());
-//        		demoStudent.setCountry(countryName.getSelectionModel().getSelectedItem().toString());
-//        		demoStudent.setUniversity(universityName.getSelectionModel().getSelectedItem().toString());
-//			demoStudent.setDegree(degree.getSelectionModel().getSelectedItem().toString());
-//			System.out.println(demoStudent.getCountry());
-//			System.out.println(demoStudent.getProvince());
-//			System.out.println(demoStudent.getUniversity());
 
 						//if user chooses to calculate GPA
         		if (calculateGPA.isSelected()) {
 							//add code for calculating GPA later
-        			gpa.setTitle("Information Dialog");
-        			gpa.setHeaderText("Look, an Information Dialog");
-        			gpa.setContentText("GPA Calculator!");
-        			gpa.showAndWait();
+        			GridPane grid = new GridPane();
+        			grid.setHgap(10);
+        			grid.setVgap(10);
+        			grid.setPadding(new Insets(20, 150, 10, 10));
+
+
+        			TextField numOfCourses = new TextField();
+        			numOfCourses.setPromptText("0");
+        			Button numCoursesButton = new Button("Enter");
+        			TextField firstCourse = new TextField();
+        			firstCourse.setPromptText("0");
+        			Button firstCourseButton = new Button("Enter");
+        			TextField secondCourse = new TextField();
+        			secondCourse.setPromptText("0");
+        			Button secondCourseButton = new Button("Enter");
+
+        			grid.add(new Label("Enter number of courses: "), 0, 0);
+        			grid.add(numOfCourses, 1, 0);
+        			grid.add(numCoursesButton, 2, 0);
+        			grid.add(new Label("Enter First Class: "), 0, 1);
+        			grid.add(firstCourse, 1, 1);
+        			grid.add(firstCourseButton, 2, 1);
+        			grid.add(new Label("Enter Second Class: "), 0, 2);
+        			grid.add(secondCourse, 1, 2);
+        			grid.add(secondCourseButton, 2, 2);
+
+        			gpa.getDialogPane().setContent(grid);
+        			gpa.setTitle("GPA Calculator");
+
+        			Optional<String> result = gpa.showAndWait();
+        			if (!result.get().isEmpty()){
+        			    System.out.println("1");
+        			}
         		}
 						//otherwise, sign up is completed
         		else {
