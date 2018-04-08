@@ -9,17 +9,15 @@ import users.Employer;
 import users.Student;
 import users.User;
 
-/**
- *
- */
+/**Has multiple methods to compute statistics of a database*/
 public class Statistics {
 	
-	/**
-	 * 
-	 */
+	
+	/**Default Constructor*/
 	public Statistics() {
 	}
 	
+	/** A method that returns the amount of Students as an int in a HashMap */
 	public int howManyStudents(HashMap<String, User> db){
 		int count = 0;
 		for (String key : db.keySet()) {
@@ -51,6 +49,7 @@ public class Statistics {
 		return (100*(studentCount/populationCount)); //Multiply by 100 to represent a percentage
 	}
 	
+	/** A method that returns the amount of Employers as an int in a HashMap */
 	public int howManyEmployers(HashMap<String, User> db){
 		int count = 0;
 		for (String key : db.keySet()) {
@@ -83,7 +82,7 @@ public class Statistics {
 	}
 	
 	
-	
+	/** A method that returns the amount of Students have a specific Degree as an int in a HashMap */
 	public int howManyStudentsInDegree(HashMap<String, User> db, String degree){
 		int count = 0;
 		for (String key : db.keySet()) {

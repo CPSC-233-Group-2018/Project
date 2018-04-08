@@ -28,10 +28,14 @@ public class Program{
           }
 
         case 3: UserTest ut = new UserTest();
+        System.out.println("\nAll User Tests Completed \n\n");
         StudentTest st = new StudentTest();
+        System.out.println("\nAll Student Tests Completed \n\n");
         EmployerTest et = new EmployerTest();
+        System.out.println("\nAll Employer Tests Completed \n\n");
         StatisticsTest stat1 = new StatisticsTest();
-        System.out.println("All Tests Completed");
+        System.out.println("\nAll Statistics Tests Completed \n\n");
+        System.out.println("\nAll Tests Completed");
           
   }
 }
