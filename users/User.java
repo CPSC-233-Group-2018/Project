@@ -257,7 +257,7 @@ public class User implements Serializable{
   }
 
   public Double getGPA(){ //Class will be overridden in student
-    return 3.0;
+    return 0.0;
   }
 
   public String getDegree(){ //Class will be overridden in student

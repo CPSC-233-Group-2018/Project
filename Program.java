@@ -4,6 +4,7 @@ import java.util.*;
 
 import application.Main;
 import tests.EmployerTest;
+import tests.StatisticsTest;
 import tests.StudentTest;
 import tests.UserTest;
 import utilities.Menu;
@@ -29,6 +30,7 @@ public class Program{
         case 3: UserTest ut = new UserTest();
         StudentTest st = new StudentTest();
         EmployerTest et = new EmployerTest();
+        StatisticsTest stat1 = new StatisticsTest();
         System.out.println("All Tests Completed");
           
   }
