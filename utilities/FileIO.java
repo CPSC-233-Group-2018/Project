@@ -7,8 +7,10 @@ import users.User;
 
 
 @SuppressWarnings("unchecked")
+/**Class containing all of the methods for creating and reading files*/
 public class FileIO {
 
+/**Method that saves the current database to a file*/
 public void fileSave(HashMap<String,User> db) {
         Scanner input = new Scanner(System.in);
         File data;
@@ -20,14 +22,8 @@ public void fileSave(HashMap<String,User> db) {
          */
         String fileName = "dataFile";
         do {
-                // System.out.println("Enter name of the file: ");
-                // input = new Scanner(System.in);
-                // fileName = input.nextLine();
+
                 data = new File(fileName + ".dat");
-                //
-                // if (data.exists()) {
-                //         System.out.println("Error, file name already exists. ");
-                // } else if (!data.exists()) {
                 try {
                         data.createNewFile();
                         createOrLoadFile = true;
@@ -37,7 +33,6 @@ public void fileSave(HashMap<String,User> db) {
                         System.out.println("File could not be created.");
                         System.err.println("IOException:	"+ e.getMessage());
                 }
-                // }
         } while (createOrLoadFile != true);
 
         try {
@@ -64,6 +59,7 @@ public void fileSave(HashMap<String,User> db) {
 
 }
 
+/**Method that loads a database from a file*/
 public HashMap<String, User> fileLoad() {
         Scanner input = new Scanner(System.in);
         File data;
@@ -71,9 +67,6 @@ public HashMap<String, User> fileLoad() {
 
         String fileName = "dataFile";
         do {
-                // System.out.println("Enter name of the file: ");
-                // input = new Scanner(System.in);
-                // fileName = input.nextLine();
                 data = new File(fileName + ".dat");
                 if (data.exists()) {
                         try {
@@ -103,14 +96,11 @@ public HashMap<String, User> fileLoad() {
         return null;
 }
 
+
 public boolean exitCheck() {
         Scanner input = new Scanner(System.in);
         File data;
         String fileName = "dataFile";
-        /*System.out.println("Enter name of the file to check: ");
-           input = new Scanner(System.in);
-           fileName = input.nextLine();
-         */
         data = new File(fileName + ".dat");
 
         if(data.exists()) {

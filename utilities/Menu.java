@@ -1,13 +1,12 @@
 package utilities;
 import java.util.Scanner;
-
 import users.Employer;
 import users.Student;
 import users.User;
 import java.text.DecimalFormat;
-
 import java.util.ArrayList;
 
+/**Menu for the text version*/
 public class Menu {
 private Student s1 = new Student();
 private Database db = new Database();
@@ -15,6 +14,8 @@ private Employer ep = new Employer();
 private FileIO f = new FileIO();
 private int employerCount = 0;   //Count of the amount of employers (acts like UID)
 private String currentCount;
+
+/**Method to create a student*/
 public void createStudent(){
         /** method to call all methods needed to create a user*/
         s1.set_User_Attributes();
@@ -30,7 +31,7 @@ public void createStudent(){
         }
 }
 
-
+/**Method that contains the "main selection menu"; continues in an infinite loop of tasks unless user chooses to exit*/
 public void selectMenu(){
         /** Gives the user options to select from that call methods*/
         Scanner input = new Scanner(System.in);
