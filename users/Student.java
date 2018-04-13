@@ -12,7 +12,6 @@ private String university;   //Create a dropdown list of options
 private String degree;
 private double GPA;
 private String studentType = "";
-private String DOB;
 
 //Default Constructor
 public Student(){
@@ -28,7 +27,6 @@ public void set_User_Attributes(){
         Scanner input = new Scanner(System.in);
         int decision = 0; //Used to store decision Values
         boolean validNumber = false; //Used to Validate Number choice
-        /** A method to set a users attributes based on user input*/
         System.out.println("\nWhat year of your degree are you in?:  ");
         input = new Scanner(System.in);
         programYear = input.nextInt();
@@ -104,11 +102,11 @@ public void set_User_Attributes(){
 
         System.out.println("\nWhat degree program are you in?: ");
         System.out.println("(1)BIO \n(2)ENG  \n(3)MED \n(4)CPSC \n(5)COMM \n(6)PSYC \n(7)SOCI \n(8)CMF \n(9)LING");
-        
+
         input = new Scanner(System.in);
         decision = input.nextInt();
-    	
-        
+
+
         switch(decision) {
 
         case 1: this.degree = "BIO";
@@ -155,7 +153,7 @@ public void set_User_Attributes(){
         if (GPA == 1) {
                 System.out.println("\nPlease Enter your GPA: ");
                 input = new Scanner(System.in);
-                GPA = input.nextDouble();
+                setGPA(input.nextDouble());
         }
         if (GPA == 2) {
                 calc_GPA();
@@ -228,9 +226,9 @@ public String validateUID() {
 	boolean validUID = false;
 	String newUID = "";
 	Scanner enterUID = new Scanner(System.in);
-	
+
 	while(validUID == false) {
-		
+
 		newUID = enterUID.nextLine();
 	if (!newUID.matches("[0-9]+") || newUID.length() != 8) {
 		System.out.println("Invalid UID entered Please Try Again");
@@ -306,6 +304,9 @@ public String getDegree(){
 
 /** Setter for GPA*/
 public void setGPA(Double newGPA){
+        if(newGPA <1.5){
+          newGPA = 1.5;
+        }
         GPA = newGPA;
 }
 
@@ -315,18 +316,6 @@ public void setGPA(Double newGPA){
 public Double getGPA(){
         double printedGPA = new Double(GPA);
         return printedGPA;
-}
-
-/** Getter for Date of birth
- * @return printedDOB
- */
-public String getDOB() {
-        String printedDOB = new String(DOB);
-        return printedDOB;
-}
-
-public void setDOB(String dob) {
-        DOB = dob;
 }
 
 }

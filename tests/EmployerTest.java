@@ -2,6 +2,7 @@ package tests;
 
 import users.Employer;
 
+/**Class to test the Employer class and validate functionality*/
 public class EmployerTest {
 
 public EmployerTest() {

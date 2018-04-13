@@ -2,8 +2,10 @@ package tests;
 
 import users.User;
 
+/**Class to test the User class and validate functionality*/
 public class UserTest {
 
+/**Constructor that starts all the tests*/
 public UserTest() {
         test_Setter_and_Getter_Names_valid();
         test_Setter_and_Getter_Locations_valid();

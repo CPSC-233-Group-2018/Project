@@ -7,8 +7,10 @@ import users.Student;
 import users.User;
 import utilities.Statistics;
 
+/**Class to test the Statistics class and validate functionality*/
 public class StatisticsTest {
 
+/**Constructor that starts all the tests*/
 public StatisticsTest() {
 								testTypePopulationsAndPercentages(); //Tests all Methods looking for specific Users
 								testAttributesPopulationsAndPercentages(); //Tests all Methods looking for specific attributes
